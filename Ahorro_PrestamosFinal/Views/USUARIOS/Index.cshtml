@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Ahorro_PrestamosFinal.Models.USUARIOS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cedula_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.puesto_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clave)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cedula_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.puesto_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.clave)
+        </td>
+        <td>
+            <button type="button" class="btn btn-success"> @Html.ActionLink("Edit", "Edit", new { id = item.id_usuario })</button>
+            |
+            <button type="button" class="btn btn-warning">@Html.ActionLink("Details", "Details", new { id = item.id_usuario })</button>
+             |
+            <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.id_usuario })</button>
+            
+        </td>
+    </tr>
+}
+
+</table>

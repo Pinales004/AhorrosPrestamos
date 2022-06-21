@@ -1,0 +1,51 @@
+﻿@model Ahorro_PrestamosFinal.Models.CUENTA_BANCARIA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CUENTA_BANCARIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.numero_cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numero_cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.banco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.banco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTES.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTES.cedula)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_cuenta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

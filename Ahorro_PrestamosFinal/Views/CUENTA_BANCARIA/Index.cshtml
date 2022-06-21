@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Ahorro_PrestamosFinal.Models.CUENTA_BANCARIA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.numero_cuenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.banco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_cuenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTES.cedula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero_cuenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.banco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_cuenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLIENTES.cedula)
+        </td>
+        <td>
+            <button type="button" class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id = item.id_cuenta })</button>
+          |
+            <button type="button" class="btn btn-warning"> @Html.ActionLink("Details", "Details", new { id = item.id_cuenta })</button>
+           |
+        <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.id_cuenta })</button>
+     
+        </td>
+    </tr>
+}
+
+</table>
