@@ -1,0 +1,67 @@
+﻿@model Ahorro_PrestamosFinal.Models.USUARIOS
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>USUARIOS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cedula_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cedula_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.puesto_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puesto_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clave)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_usuario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

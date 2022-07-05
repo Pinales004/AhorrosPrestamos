@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Ahorro_PrestamosFinal.Models.INVERSIONES>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_inversion)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.tasa_inversion_interes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_realizada_inversion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_termino_inversion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vigente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTES.cedula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_inversion)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.tasa_inversion_interes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_realizada_inversion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_termino_inversion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vigente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLIENTES.cedula)
+        </td>
+        <td>
+            <button type="button" class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id = item.id_inversion })</button>
+             |
+            <button type="button" class="btn btn-warning">@Html.ActionLink("Details", "Details", new { id = item.id_inversion })</button>
+             |
+            <button type="button" class="btn btn-danger"> @Html.ActionLink("Delete", "Delete", new { id = item.id_inversion })</button>
+           
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="35b55a8873dc4343ac2a650bae3539d9" Name="Diagram1">
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.CLIENTES" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.CUENTA_BANCARIA" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.CUOTAS_PRESTAMO" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.GARANTIA" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.INTERMEDIA_CLIENTE_ROL" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.INVERSIONES" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.PAGO_INVERSION" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.PRESTAMOS" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.ROL_CLIENTES" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.USUARIOS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__CUENTA_BA__id_cl__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__INTERMEDI__id_cl__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__INVERSION__id_cl__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__PRESTAMOS__clien__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__PRESTAMOS__clien__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__CUOTAS_PR__id_pr__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__PRESTAMOS__id_ga__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__INTERMEDI__id_ro__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__PAGO_INVE__id_in__534D60F1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AhorrosPrestamosModel.ReporteAtraso" Width="1.5" PointX="10.5" PointY="7.25" />
+        <AssociationConnector Association="AhorrosPrestamosModel.FK__ReporteAt__id_cu__6FE99F9F" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

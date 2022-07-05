@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Ahorro_PrestamosFinal.Models.GARANTIA>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo_garantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_garantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valor_garantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ubicacion_garantia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo_garantia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_garantia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valor_garantia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ubicacion_garantia)
+        </td>
+        <td>
+            <button type="button" class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id = item.id_garantia })</button>
+             |
+            <button type="button" class="btn btn-warning">@Html.ActionLink("Details", "Details", new { id = item.id_garantia })</button>
+             |
+            <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.id_garantia })</button>
+            
+        </td>
+    </tr>
+}
+
+</table>

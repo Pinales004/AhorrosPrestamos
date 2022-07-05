@@ -23,7 +23,7 @@
     <ProjectView>ProjectFiles</ProjectView>
     <WebStackScaffolding_DbContextTypeFullName>Ahorro_PrestamosFinal.Models.AhorrosPrestamosEntities</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
-    <NameOfLastUsedPublishProfile>C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Desarrollo\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

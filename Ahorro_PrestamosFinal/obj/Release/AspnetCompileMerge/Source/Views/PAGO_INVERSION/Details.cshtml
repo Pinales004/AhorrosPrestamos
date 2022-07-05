@@ -1,0 +1,68 @@
+﻿@model Ahorro_PrestamosFinal.Models.PAGO_INVERSION
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PAGO_INVERSION</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_planificada_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_planificada_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_efectiva_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_efectiva_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto_Pagado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto_Pagado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modalidad_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modalidad_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.comprobante_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comprobante_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INVERSIONES.id_inversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INVERSIONES.id_inversion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_cuota_inversion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

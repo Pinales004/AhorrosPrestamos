@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Ahorro_PrestamosFinal.Models.CUOTAS_PRESTAMO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pagos Prestamos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+   
+    </p>
+
+    <div class="table-responsive">
+        <table id="miTabla" class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuotas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fecha_planificada_pago)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cuota_Mensual)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Intereses)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Monto_Pagado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Deuda_Capital)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fecha_efectiva_pago)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Abono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.modalidad_pago)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PRESTAMOS.id_prestamo)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cuotas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha_planificada_pago)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cuota_Mensual)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Intereses)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Monto_Pagado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Deuda_Capital)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha_efectiva_pago)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Abono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.modalidad_pago)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PRESTAMOS.id_prestamo)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id = item.id_cuota })</button>
+                        |
+                        <button type="button" class="btn btn-warning">@Html.ActionLink("Details", "Details", new { id = item.id_cuota })</button>
+                         |
+                        <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.id_cuota })</button>
+                       
+                    </td>
+                </tr>
+
+            }
+
+
+        </table>
+    </div>
+
+

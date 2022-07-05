@@ -1,0 +1,99 @@
+﻿@model Ahorro_PrestamosFinal.Models.CUOTAS_PRESTAMO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CUOTAS_PRESTAMO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuotas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuotas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_planificada_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_planificada_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuota_Mensual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuota_Mensual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Intereses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intereses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto_Pagado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto_Pagado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deuda_Capital)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deuda_Capital)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_efectiva_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_efectiva_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Abono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modalidad_pago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modalidad_pago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRESTAMOS.id_prestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRESTAMOS.id_prestamo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_cuota }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

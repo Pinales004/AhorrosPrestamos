@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Ahorro_PrestamosFinal.Models.ReporteAtraso>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div>
+        @Html.DropDownList("dias_atraso", new List<SelectListItem>
+   {
+
+       new SelectListItem{Text="0 - 30", Value ="0-30" },
+       new SelectListItem{Text="31 - 60", Value ="31-60" },
+       new SelectListItem{Text="61 - 90", Value ="61-90" },
+       new SelectListItem{Text="91 - 120", Value ="91-120" }, }, new { @class = "form-control" }) 
+        <br />
+        <input type="submit" value="Buscar" class="form-control form-control-lg  " /><br />
+        
+        
+        
+
+
+    </div>
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tasa_interes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_pago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dias_atraso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.interes_mora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CUOTAS_PRESTAMO.modalidad_pago)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tasa_interes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_pago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dias_atraso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.interes_mora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CUOTAS_PRESTAMO.modalidad_pago)
+        </td>
+        <td>
+            <button type="button" class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id = item.id_reporte })</button>
+            |
+            <button type="button" class="btn btn-warning">@Html.ActionLink("Details", "Details", new { id = item.id_reporte })</button>  |
+            <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.id_reporte })</button> 
+        </td>
+    </tr>
+}
+
+</table>

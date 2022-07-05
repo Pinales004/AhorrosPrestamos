@@ -1,0 +1,212 @@
+﻿@model Ahorro_PrestamosFinal.Models.PRESTAMOS
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PRESTAMOS</h4>
+    <hr />
+    <dl class="d-inline">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_solicitud_prestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_solicitud_prestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_aprobacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_aprobacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_termino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_termino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_prestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_prestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tasa_interes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tasa_interes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tiempo_Amortizacion_Meses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tiempo_Amortizacion_Meses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Prestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Prestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aprovado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aprovado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTES.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTES.cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTES1.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTES1.cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GARANTIA.tipo_garantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GARANTIA.tipo_garantia)
+        </dd>
+
+    </dl>
+</div>
+
+<h1>Tabla Amortizacion</h1>
+<section class="tabla">
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Cuota Fija</th>
+                <th>Interes mensual</th>
+                <th>Abono Capital</th>
+                <th>Amortizacion</th>
+                <th>Pendiente</th>
+            </tr>
+        </thead>
+        @{
+            DateTime fecha = Convert.ToDateTime(Model.fecha_inicio);
+            double capital = Convert.ToDouble(Model.monto_prestamo);
+            double interes = Convert.ToDouble(Model.tasa_interes) / 1200;
+            double plazo = Convert.ToDouble(Model.Tiempo_Amortizacion_Meses);
+
+            //formula para calcular
+
+            double Monto_total = capital * (interes / (double)(1 - Math.Pow(1 + (double)interes, -plazo)));
+
+            double interes_menual = 0;
+            double amortizacion = 0;
+            double total = 0;
+            int i = 1;
+
+
+            for (i = 1; i <= plazo; i++)
+            {
+
+                interes_menual = Math.Round((interes * capital), 2);
+                capital = Math.Round((capital - Monto_total + interes_menual), 2);
+
+
+                //amortizazion total y principales
+                total += Math.Round((Monto_total - interes_menual), 2);
+                amortizacion = Monto_total - interes_menual;
+
+                <tbody>
+                    <tr>
+                        <td>@i</td>
+                        <td>@fecha.AddMonths(i)</td>
+                        <td>@Math.Round(Monto_total, MidpointRounding.AwayFromZero)</td>
+                        <td>@Math.Round(interes_menual, MidpointRounding.AwayFromZero)</td>
+                        <td>@Math.Round(amortizacion, MidpointRounding.AwayFromZero)</td>
+                        <td>@Math.Round(total, MidpointRounding.AwayFromZero)</td>
+                        <td>@Math.Round(capital, MidpointRounding.AwayFromZero)</td>
+
+                    </tr>
+                </tbody>
+
+            }
+
+        }
+    </table>
+</section>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_prestamo }) |
+    @Html.ActionLink("Back to List", "Index")
+    <button id="imprimir">Imprimir</button>
+</p>
+
+
+<script>
+
+    //para imprimir
+
+    let Imprimir = document.getElementById('imprimir');
+    console.log(Imprimir);
+
+    let content = document.querySelector('.table').innerHTML;
+
+
+    Imprimir.onclick = () => {
+        window.document.write(content);
+        const head = document.getElementsByTagName("head")[0];
+        console.log(head);
+      
+        head.innerHTML =
+            ' <link href="~/Content/css/bootstrap.css" rel="stylesheet" />';
+            
+        setTimeout(() => {
+            window.print();
+        }, 500)
+
+
+
+
+
+    }
+
+
+
+</script>
+
+

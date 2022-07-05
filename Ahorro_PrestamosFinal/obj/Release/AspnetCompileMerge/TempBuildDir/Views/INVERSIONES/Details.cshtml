@@ -1,0 +1,141 @@
+﻿@model Ahorro_PrestamosFinal.Models.INVERSIONES
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>INVERSIONES</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_inversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_inversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tasa_inversion_interes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tasa_inversion_interes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_realizada_inversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_realizada_inversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_termino_inversion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_termino_inversion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vigente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vigente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTES.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTES.cedula)
+        </dd>
+
+    </dl>
+</div>
+<h1>Tabla Amortizacion</h1>
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Fecha</th>
+            <th>Cuota Fija</th>
+            <th>Interes mensual</th>
+            <th>Abono Capital</th>
+            <th>Amortizacion</th>
+            <th>Pendiente</th>
+        </tr>
+    </thead>
+    @{
+        DateTime fechaI = Convert.ToDateTime(Model.fecha_realizada_inversion);
+        DateTime fechaf = Convert.ToDateTime(Model.fecha_termino_inversion);
+
+        //sacar meses para calcular amortizacion
+
+        var meses = Math.Abs(fechaf.Month - fechaI.Month) + 12 * (fechaf.Year - fechaI.Year);
+
+
+        double capital = Convert.ToDouble(Model.monto_inversion);
+        double interes = Convert.ToDouble(Model.tasa_inversion_interes) / 1200;
+
+
+        //formula para calcular
+
+        double Monto_total = capital * (interes / (double)(1 - Math.Pow(1 + (double)interes,12)));
+
+        double interes_menual = 0;
+        double amortizacion = 0;
+        double total = 0;
+        int i = 1;
+
+
+        for (i = 1; i <= meses; i++)
+        {
+
+            interes_menual = Math.Round((interes * capital), 2);
+            capital = Math.Round((capital - Monto_total + interes_menual), 2);
+
+
+            //amortizazion total y principales
+            total += Math.Round((Monto_total - interes_menual), 2);
+            amortizacion = Monto_total - interes_menual;
+
+            <tbody>
+                <tr>
+                    <td>@i</td>
+                    <td>@fechaI.AddMonths(i)</td>
+                    <td>@Math.Round(Monto_total, MidpointRounding.AwayFromZero)</td>
+                    <td>@Math.Round(interes_menual, MidpointRounding.AwayFromZero)</td>
+                    <td>@Math.Round(amortizacion, MidpointRounding.AwayFromZero)</td>
+                    <td>@Math.Round(total, MidpointRounding.AwayFromZero)</td>
+                    <td>@Math.Round(capital, MidpointRounding.AwayFromZero)</td>
+
+                </tr>
+            </tbody>
+
+        }
+
+    }
+</table>
+
+
+
+
+
+
+
+
+
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_inversion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,121 @@
+﻿@model Ahorro_PrestamosFinal.Models.PRESTAMOS
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PRESTAMOS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_solicitud_prestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_solicitud_prestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_aprobacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_aprobacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_termino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_termino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_prestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_prestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tasa_interes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tasa_interes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tiempo_Amortizacion_Meses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tiempo_Amortizacion_Meses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Prestamo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Prestamo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aprovado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aprovado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTES.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTES.cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CLIENTES1.cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CLIENTES1.cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GARANTIA.tipo_garantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GARANTIA.tipo_garantia)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

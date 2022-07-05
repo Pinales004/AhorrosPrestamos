@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Ahorro_PrestamosFinal.Models.INTERMEDIA_CLIENTE_ROL>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTES.cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ROL_CLIENTES.tipo_rol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLIENTES.cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ROL_CLIENTES.tipo_rol)
+        </td>
+        <td>
+            <button type="button" class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id = item.id_intermedia_cliente_rol })</button>
+            |
+            <button type="button" class="btn btn-warning">@Html.ActionLink("Details", "Details", new { id = item.id_intermedia_cliente_rol })</button> |
+            <button type="button" class="btn btn-danger">@Html.ActionLink("Delete", "Delete", new { id = item.id_intermedia_cliente_rol })</button>
+            
+        </td>
+    </tr>
+}
+
+</table>
