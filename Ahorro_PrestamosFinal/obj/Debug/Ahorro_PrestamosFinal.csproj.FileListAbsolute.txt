@@ -83,8 +83,8 @@ C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_Prest
 C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\bin\es\System.Web.WebPages.resources.dll
 C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\obj\Debug\Ahorro_PrestamosFinal.csproj.AssemblyReference.cache
 C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\obj\Debug\Ahorro_PrestamosFinal.csproj.CoreCompileInputs.cache
 C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\obj\Debug\Ahorro_PrestamosFinal.csproj.CopyComplete
 C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\obj\Debug\Ahorro_PrestamosFinal.dll
 C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\obj\Debug\Ahorro_PrestamosFinal.pdb
+C:\Users\pinal\OneDrive\Escritorio\trabajos programacion\asp.net c#\Ahorro_PrestamosFinal\Ahorro_PrestamosFinal\obj\Debug\Ahorro_PrestamosFinal.csproj.AssemblyReference.cache

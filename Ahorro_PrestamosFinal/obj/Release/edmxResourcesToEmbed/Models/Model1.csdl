@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AhorrosPrestamosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CLIENTES">
+    <Key>
+      <PropertyRef Name="id_cliente" />
+    </Key>
+    <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cedula" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CUENTA_BANCARIA" Relationship="Self.FK__CUENTA_BA__id_cl__5629CD9C" FromRole="CLIENTES" ToRole="CUENTA_BANCARIA" />
+    <NavigationProperty Name="INTERMEDIA_CLIENTE_ROL" Relationship="Self.FK__INTERMEDI__id_cl__3A81B327" FromRole="CLIENTES" ToRole="INTERMEDIA_CLIENTE_ROL" />
+    <NavigationProperty Name="INVERSIONES" Relationship="Self.FK__INVERSION__id_cl__5070F446" FromRole="CLIENTES" ToRole="INVERSIONES" />
+    <NavigationProperty Name="PRESTAMOS" Relationship="Self.FK__PRESTAMOS__clien__412EB0B6" FromRole="CLIENTES" ToRole="PRESTAMOS" />
+    <NavigationProperty Name="PRESTAMOS1" Relationship="Self.FK__PRESTAMOS__clien__4222D4EF" FromRole="CLIENTES" ToRole="PRESTAMOS" />
+  </EntityType>
+  <EntityType Name="CUENTA_BANCARIA">
+    <Key>
+      <PropertyRef Name="id_cuenta" />
+    </Key>
+    <Property Name="id_cuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero_cuenta" Type="Int64" />
+    <Property Name="banco" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tipo_cuenta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="id_cliente" Type="Int32" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.FK__CUENTA_BA__id_cl__5629CD9C" FromRole="CUENTA_BANCARIA" ToRole="CLIENTES" />
+  </EntityType>
+  <EntityType Name="CUOTAS_PRESTAMO">
+    <Key>
+      <PropertyRef Name="id_cuota" />
+    </Key>
+    <Property Name="id_cuota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cuotas" Type="Int32" />
+    <Property Name="fecha_planificada_pago" Type="DateTime" Precision="0" />
+    <Property Name="Cuota_Mensual" Type="Double" />
+    <Property Name="Intereses" Type="Double" />
+    <Property Name="Monto_Pagado" Type="Double" />
+    <Property Name="Deuda_Capital" Type="Double" />
+    <Property Name="fecha_efectiva_pago" Type="DateTime" Precision="0" />
+    <Property Name="Abono" Type="Double" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="modalidad_pago" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="id_prestamo" Type="Int32" />
+    <NavigationProperty Name="PRESTAMOS" Relationship="Self.FK__CUOTAS_PR__id_pr__4BAC3F29" FromRole="CUOTAS_PRESTAMO" ToRole="PRESTAMOS" />
+    <NavigationProperty Name="ReporteAtraso" Relationship="AhorrosPrestamosModel.FK__ReporteAt__id_cu__6FE99F9F" FromRole="CUOTAS_PRESTAMO" ToRole="ReporteAtraso" />
+  </EntityType>
+  <EntityType Name="GARANTIA">
+    <Key>
+      <PropertyRef Name="id_garantia" />
+    </Key>
+    <Property Name="id_garantia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo_garantia" Type="Int32" />
+    <Property Name="tipo_garantia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="valor_garantia" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="ubicacion_garantia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PRESTAMOS" Relationship="Self.FK__PRESTAMOS__id_ga__46E78A0C" FromRole="GARANTIA" ToRole="PRESTAMOS" />
+  </EntityType>
+  <EntityType Name="INTERMEDIA_CLIENTE_ROL">
+    <Key>
+      <PropertyRef Name="id_intermedia_cliente_rol" />
+    </Key>
+    <Property Name="id_intermedia_cliente_rol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cliente_intermedia" Type="Int32" />
+    <Property Name="id_rol_cliente_intermedia" Type="Int32" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.FK__INTERMEDI__id_cl__3A81B327" FromRole="INTERMEDIA_CLIENTE_ROL" ToRole="CLIENTES" />
+    <NavigationProperty Name="ROL_CLIENTES" Relationship="Self.FK__INTERMEDI__id_ro__3B75D760" FromRole="INTERMEDIA_CLIENTE_ROL" ToRole="ROL_CLIENTES" />
+  </EntityType>
+  <EntityType Name="INVERSIONES">
+    <Key>
+      <PropertyRef Name="id_inversion" />
+    </Key>
+    <Property Name="id_inversion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="monto_inversion" Type="Double" />
+    <Property Name="tipo_inversion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="tasa_inversion_interes" Type="Double" />
+    <Property Name="fecha_realizada_inversion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_termino_inversion" Type="DateTime" Precision="0" />
+    <Property Name="vigente" Type="Boolean" />
+    <Property Name="id_cliente" Type="Int32" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.FK__INVERSION__id_cl__5070F446" FromRole="INVERSIONES" ToRole="CLIENTES" />
+    <NavigationProperty Name="PAGO_INVERSION" Relationship="Self.FK__PAGO_INVE__id_in__534D60F1" FromRole="INVERSIONES" ToRole="PAGO_INVERSION" />
+  </EntityType>
+  <EntityType Name="PAGO_INVERSION">
+    <Key>
+      <PropertyRef Name="id_cuota_inversion" />
+    </Key>
+    <Property Name="id_cuota_inversion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha_planificada_pago" Type="DateTime" Precision="0" />
+    <Property Name="fecha_efectiva_pago" Type="DateTime" Precision="0" />
+    <Property Name="Monto_Pagado" Type="Double" />
+    <Property Name="modalidad_pago" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="comprobante_pago" Type="Int32" />
+    <Property Name="id_inversion" Type="Int32" />
+    <NavigationProperty Name="INVERSIONES" Relationship="Self.FK__PAGO_INVE__id_in__534D60F1" FromRole="PAGO_INVERSION" ToRole="INVERSIONES" />
+  </EntityType>
+  <EntityType Name="PRESTAMOS">
+    <Key>
+      <PropertyRef Name="id_prestamo" />
+    </Key>
+    <Property Name="id_prestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente_prestatario" Type="Int32" />
+    <Property Name="cliente_fiador" Type="Int32" />
+    <Property Name="fecha_solicitud_prestamo" Type="DateTime" Precision="0" />
+    <Property Name="fecha_aprobacion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
+    <Property Name="fecha_termino" Type="DateTime" Precision="0" />
+    <Property Name="monto_prestamo" Type="Double" />
+    <Property Name="tasa_interes" Type="Double" />
+    <Property Name="Tiempo_Amortizacion_Meses" Type="Int32" />
+    <Property Name="Total_Prestamo" Type="Double" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="aprovado" Type="Boolean" />
+    <Property Name="id_garantia" Type="Int32" />
+    <NavigationProperty Name="CLIENTES" Relationship="Self.FK__PRESTAMOS__clien__412EB0B6" FromRole="PRESTAMOS" ToRole="CLIENTES" />
+    <NavigationProperty Name="CLIENTES1" Relationship="Self.FK__PRESTAMOS__clien__4222D4EF" FromRole="PRESTAMOS" ToRole="CLIENTES" />
+    <NavigationProperty Name="CUOTAS_PRESTAMO" Relationship="Self.FK__CUOTAS_PR__id_pr__4BAC3F29" FromRole="PRESTAMOS" ToRole="CUOTAS_PRESTAMO" />
+    <NavigationProperty Name="GARANTIA" Relationship="Self.FK__PRESTAMOS__id_ga__46E78A0C" FromRole="PRESTAMOS" ToRole="GARANTIA" />
+  </EntityType>
+  <EntityType Name="ROL_CLIENTES">
+    <Key>
+      <PropertyRef Name="id_rol_cliente" />
+    </Key>
+    <Property Name="id_rol_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo_rol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="INTERMEDIA_CLIENTE_ROL" Relationship="Self.FK__INTERMEDI__id_ro__3B75D760" FromRole="ROL_CLIENTES" ToRole="INTERMEDIA_CLIENTE_ROL" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="apellido_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="cedula_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="puesto_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__CUENTA_BA__id_cl__5629CD9C">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+    <End Role="CUENTA_BANCARIA" Type="Self.CUENTA_BANCARIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="CUENTA_BANCARIA">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INTERMEDI__id_cl__3A81B327">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+    <End Role="INTERMEDIA_CLIENTE_ROL" Type="Self.INTERMEDIA_CLIENTE_ROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="INTERMEDIA_CLIENTE_ROL">
+        <PropertyRef Name="id_cliente_intermedia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INVERSION__id_cl__5070F446">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+    <End Role="INVERSIONES" Type="Self.INVERSIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="INVERSIONES">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PRESTAMOS__clien__412EB0B6">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+    <End Role="PRESTAMOS" Type="Self.PRESTAMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="PRESTAMOS">
+        <PropertyRef Name="cliente_prestatario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PRESTAMOS__clien__4222D4EF">
+    <End Role="CLIENTES" Type="Self.CLIENTES" Multiplicity="0..1" />
+    <End Role="PRESTAMOS" Type="Self.PRESTAMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTES">
+        <PropertyRef Name="id_cliente" />
+      </Principal>
+      <Dependent Role="PRESTAMOS">
+        <PropertyRef Name="cliente_fiador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CUOTAS_PR__id_pr__4BAC3F29">
+    <End Role="PRESTAMOS" Type="Self.PRESTAMOS" Multiplicity="0..1" />
+    <End Role="CUOTAS_PRESTAMO" Type="Self.CUOTAS_PRESTAMO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRESTAMOS">
+        <PropertyRef Name="id_prestamo" />
+      </Principal>
+      <Dependent Role="CUOTAS_PRESTAMO">
+        <PropertyRef Name="id_prestamo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PRESTAMOS__id_ga__46E78A0C">
+    <End Role="GARANTIA" Type="Self.GARANTIA" Multiplicity="0..1" />
+    <End Role="PRESTAMOS" Type="Self.PRESTAMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GARANTIA">
+        <PropertyRef Name="id_garantia" />
+      </Principal>
+      <Dependent Role="PRESTAMOS">
+        <PropertyRef Name="id_garantia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__INTERMEDI__id_ro__3B75D760">
+    <End Role="ROL_CLIENTES" Type="Self.ROL_CLIENTES" Multiplicity="0..1" />
+    <End Role="INTERMEDIA_CLIENTE_ROL" Type="Self.INTERMEDIA_CLIENTE_ROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL_CLIENTES">
+        <PropertyRef Name="id_rol_cliente" />
+      </Principal>
+      <Dependent Role="INTERMEDIA_CLIENTE_ROL">
+        <PropertyRef Name="id_rol_cliente_intermedia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PAGO_INVE__id_in__534D60F1">
+    <End Role="INVERSIONES" Type="Self.INVERSIONES" Multiplicity="0..1" />
+    <End Role="PAGO_INVERSION" Type="Self.PAGO_INVERSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INVERSIONES">
+        <PropertyRef Name="id_inversion" />
+      </Principal>
+      <Dependent Role="PAGO_INVERSION">
+        <PropertyRef Name="id_inversion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AhorrosPrestamosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CLIENTES" EntityType="Self.CLIENTES" />
+    <EntitySet Name="CUENTA_BANCARIA" EntityType="Self.CUENTA_BANCARIA" />
+    <EntitySet Name="CUOTAS_PRESTAMO" EntityType="Self.CUOTAS_PRESTAMO" />
+    <EntitySet Name="GARANTIA" EntityType="Self.GARANTIA" />
+    <EntitySet Name="INTERMEDIA_CLIENTE_ROL" EntityType="Self.INTERMEDIA_CLIENTE_ROL" />
+    <EntitySet Name="INVERSIONES" EntityType="Self.INVERSIONES" />
+    <EntitySet Name="PAGO_INVERSION" EntityType="Self.PAGO_INVERSION" />
+    <EntitySet Name="PRESTAMOS" EntityType="Self.PRESTAMOS" />
+    <EntitySet Name="ROL_CLIENTES" EntityType="Self.ROL_CLIENTES" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+    <AssociationSet Name="FK__CUENTA_BA__id_cl__5629CD9C" Association="Self.FK__CUENTA_BA__id_cl__5629CD9C">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="CUENTA_BANCARIA" EntitySet="CUENTA_BANCARIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INTERMEDI__id_cl__3A81B327" Association="Self.FK__INTERMEDI__id_cl__3A81B327">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="INTERMEDIA_CLIENTE_ROL" EntitySet="INTERMEDIA_CLIENTE_ROL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INVERSION__id_cl__5070F446" Association="Self.FK__INVERSION__id_cl__5070F446">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="INVERSIONES" EntitySet="INVERSIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PRESTAMOS__clien__412EB0B6" Association="Self.FK__PRESTAMOS__clien__412EB0B6">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="PRESTAMOS" EntitySet="PRESTAMOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PRESTAMOS__clien__4222D4EF" Association="Self.FK__PRESTAMOS__clien__4222D4EF">
+      <End Role="CLIENTES" EntitySet="CLIENTES" />
+      <End Role="PRESTAMOS" EntitySet="PRESTAMOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CUOTAS_PR__id_pr__4BAC3F29" Association="Self.FK__CUOTAS_PR__id_pr__4BAC3F29">
+      <End Role="PRESTAMOS" EntitySet="PRESTAMOS" />
+      <End Role="CUOTAS_PRESTAMO" EntitySet="CUOTAS_PRESTAMO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PRESTAMOS__id_ga__46E78A0C" Association="Self.FK__PRESTAMOS__id_ga__46E78A0C">
+      <End Role="GARANTIA" EntitySet="GARANTIA" />
+      <End Role="PRESTAMOS" EntitySet="PRESTAMOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__INTERMEDI__id_ro__3B75D760" Association="Self.FK__INTERMEDI__id_ro__3B75D760">
+      <End Role="ROL_CLIENTES" EntitySet="ROL_CLIENTES" />
+      <End Role="INTERMEDIA_CLIENTE_ROL" EntitySet="INTERMEDIA_CLIENTE_ROL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PAGO_INVE__id_in__534D60F1" Association="Self.FK__PAGO_INVE__id_in__534D60F1">
+      <End Role="INVERSIONES" EntitySet="INVERSIONES" />
+      <End Role="PAGO_INVERSION" EntitySet="PAGO_INVERSION" />
+    </AssociationSet>
+    <EntitySet Name="ReporteAtraso" EntityType="AhorrosPrestamosModel.ReporteAtraso" />
+    <AssociationSet Name="FK__ReporteAt__id_cu__6FE99F9F" Association="AhorrosPrestamosModel.FK__ReporteAt__id_cu__6FE99F9F">
+      <End Role="CUOTAS_PRESTAMO" EntitySet="CUOTAS_PRESTAMO" />
+      <End Role="ReporteAtraso" EntitySet="ReporteAtraso" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ReporteAtraso">
+    <Key>
+      <PropertyRef Name="id_reporte" />
+    </Key>
+    <Property Name="id_reporte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tasa_interes" Type="Double" />
+    <Property Name="monto_pago" Type="Double" />
+    <Property Name="dias_atraso" Type="Int32" />
+    <Property Name="interes_mora" Type="Double" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="id_cuota_prestamo" Type="Int32" />
+    <NavigationProperty Name="CUOTAS_PRESTAMO" Relationship="AhorrosPrestamosModel.FK__ReporteAt__id_cu__6FE99F9F" FromRole="ReporteAtraso" ToRole="CUOTAS_PRESTAMO" />
+  </EntityType>
+  <Association Name="FK__ReporteAt__id_cu__6FE99F9F">
+    <End Type="AhorrosPrestamosModel.CUOTAS_PRESTAMO" Role="CUOTAS_PRESTAMO" Multiplicity="0..1" />
+    <End Type="AhorrosPrestamosModel.ReporteAtraso" Role="ReporteAtraso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUOTAS_PRESTAMO">
+        <PropertyRef Name="id_cuota" />
+      </Principal>
+      <Dependent Role="ReporteAtraso">
+        <PropertyRef Name="id_cuota_prestamo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
